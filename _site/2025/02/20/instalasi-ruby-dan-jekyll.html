@@ -1,0 +1,236 @@
+<h1>instalasi Ruby dan Jekyll</h1>
+<p>20 Feb 2025 - </p>
+
+<p>penjelasan tentang instalasi ruby dan jekyll</p>
+
+<p><img src="/assets/images/move.jpg" alt="markdown" /></p>
+
+<p>sumber:kickli.my.id</p>
+
+<p>1.2 Instalasi</p>
+
+<p>a) instalasi Ruby dan Jekyll</p>
+
+<p>1). cek apakah ruby dan jekyll</p>
+
+<p>buka terminal atau command prompt,lalu ketik:</p>
+
+<p>ruby -v</p>
+
+<p>cek ruby sudah terpasang, maka akan muncul versi ruby.</p>
+
+<p>2). cek RubyGems</p>
+
+<p>ketik perintah berikut:</p>
+
+<p>gem -varian</p>
+
+<p>3). cek GCC dan make</p>
+
+<p>ketik perintah berikut:</p>
+
+<p>gcc -v</p>
+
+<p>g++ -v</p>
+
+<p>make -v</p>
+
+<p>jika belum terpasang,install terlebih dahulu MingGW (untuk Windows) atau gunakan package manager seperti apt (linux)</p>
+
+<ol>
+  <li>Download ruby installer</li>
+</ol>
+
+<p>buka link berikut: https://rubyinstaller.org</p>
+
+<p>pilih versi ruby2.7.0 atau lebih tinggi.</p>
+
+<p>ikuti arahan untuk instalasi hingga selesai.</p>
+
+<ol>
+  <li>install jekyll dan bundler</li>
+</ol>
+
+<p>setelah ruby terpasang,instal jekyll dan bundler dan perintah:</p>
+
+<p>gem instal jekyll bundler</p>
+
+<p>b) install Git</p>
+
+<p>1). Download Git installer</p>
+
+<p>buka link berikut: https://git-scm.com</p>
+
+<p>pilih installer yang sesuai dengan sistem operasi (contoh: 64-bit untuk Windows).</p>
+
+<p>2). lakukan instalasi</p>
+
+<p>ikuti instruksi instalasi hingga selesai.</p>
+
+<p>Setelah selesai, cek apakah Git sudah terpasang dengan perintah:</p>
+
+<p>git –version</p>
+
+<p>c) install Visual Studio code</p>
+
+<p>1). Download VSCode installer</p>
+
+<p>Buka link berikut: https://code.visualstudio.com</p>
+
+<p>Pilih installer sesuai dengan sistem operasi (contoh: 64-bit untuk Windows).</p>
+
+<p>2). Lakukan Instalasi</p>
+
+<p>Ikuti instruksi sampai selesai.</p>
+
+<p>d) install Google Chrome</p>
+
+<p>1). Download Chrome Installer</p>
+
+<p>Buka link berikut: https://www.google.com/ chrome</p>
+
+<p>Klik tombol Download Chrome.</p>
+
+<p>Ikuti instruksi instalasi hingga selesai.</p>
+
+<p>1.3 personal web dengan jekyll dan GitHub Pages</p>
+
+<p>1). Buat Akun GitHub</p>
+
+<p>Buka https://github.com dan daftar akun.</p>
+
+<p>2). Buat Repository GitHub</p>
+
+<p>Buat repository baru dengan nama:</p>
+
+<p>username.github.io</p>
+
+<p>contoh : jika username github kamu mudaa, maka repository-nya adalah:</p>
+
+<p>mudaa.github.io</p>
+
+<p>3). clone Repository ke lokal</p>
+
+<p>Buka terminal atau Command Prompt, lalu jalankan:</p>
+
+<p>git clone https://github.com/username/username.github.io.git</p>
+
+<p>(Ganti username dengan username GitHub kamu)</p>
+
+<p>4). Inisialisasi Jekyll di Folder Repository</p>
+
+<p>Masuk ke folder repository:</p>
+
+<p>cd username.github.io</p>
+
+<p>Inisialisasi Jekyll:</p>
+
+<p>bundle init</p>
+
+<p>Perintah ini akan membuat file Gemfile di dalam folder proyek.</p>
+
+<p>5). Edit Gemfile</p>
+
+<p>Buka file Gemfile di VSCode, lalu tambahkan kode berikut:</p>
+
+<p>source “https://rubygems.org”</p>
+
+<p>gem “jekyll”</p>
+
+<p>Lalu jalankan perintah:</p>
+
+<p>bundle install</p>
+
+<p>6). Buat File index.html</p>
+
+<p>Buat file baru bernama index.html di dalam folder proyek, lalu isi dengan kode berikut:</p>
+
+<p>7). Build dan Jalankan Jekyll</p>
+
+<p>Jalankan perintah berikut untuk build website:</p>
+
+<p>jekyll build</p>
+
+<p>Untuk menjalankan server Jekyll:</p>
+
+<p>jekyll serve</p>
+
+<p>Cek di browser:</p>
+
+<p>http://localhost:4000</p>
+
+<p>8). Edit Gemfile.lock untuk Platform Linux</p>
+
+<p>Buka file Gemfile.lock, lalu tambahkan platform linux pada bagian PLATFORMS:</p>
+
+<p>PLATFORMS</p>
+
+<p>ruby
+  x86_64-linux</p>
+
+<p>9). Push Repository ke GitHub</p>
+
+<p>Setelah berhasil dijalankan secara lokal, upload ke GitHub dengan perintah:</p>
+
+<p>git add .</p>
+
+<p>git commit -m “Initial commit”</p>
+
+<p>git push origin main</p>
+
+<p>10). Buat GitHub Actions untuk CI/CD</p>
+
+<ul>
+  <li>
+    <p>didalam repository github,buat folder .github/workflow.</p>
+  </li>
+  <li>
+    <p>buat file baru jekyll.yml di dalam folder tersebut,lalu tambahkan kode berikut:
+ ‘‘yaml name: Jekyll Deploy</p>
+  </li>
+</ul>
+
+<p>on: push: branches: - main</p>
+
+<p>jobs: build-deploy: runs-on: ubuntu-latest steps: - name: Checkout repository uses: actions/checkout@v2</p>
+
+<ul>
+  <li>
+    <p>name: Setup Ruby
+uses: ruby/setup-ruby@v1
+with:
+  ruby-version: ‘2.7’</p>
+  </li>
+  <li>
+    <p>name: Install dependencies
+run: bundle install</p>
+  </li>
+  <li>
+    <p>name: Build site
+run: JEKYLL_ENV=production bundle exec jekyll build</p>
+  </li>
+  <li>
+    <p>name: Deploy to GitHub Pages
+uses: peaceiris/actions-gh-pages@v3
+with:
+  github_token: $
+  publish_dir: ./_site ```</p>
+  </li>
+</ul>
+
+<p>1.Commit dan push ke GitHub:
+git add .</p>
+
+<p>git commit -m “Add GitHub Actions for</p>
+
+<p>Jekyll deployment”</p>
+
+<p>git push origin main</p>
+
+<p>✅ Selesai!</p>
+
+<p>Sekarang website kamu bisa diakses di:</p>
+
+<p>https://username.github.io</p>
+
+<p>(Ganti username dengan username GitHub kamu).</p>

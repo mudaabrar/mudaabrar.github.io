@@ -1,0 +1,55 @@
+.current { 
+    color: green;
+}
+
+.last_name {
+    color: aquamarine;
+}
+
+/* Gaya Umum untuk Tubuh Halaman */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    line-height: 1.6;
+}
+
+/* Gaya untuk Tautan */
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Gaya untuk Judul Halaman */
+h1 {
+    font-size: 24px;
+    color: darkblue;
+}
+
+/* Gaya untuk Nama */
+.name {
+    font-weight: bold;
+    color: goldenrod;
+}
+
+/* Gaya untuk Deskripsi Diri */
+.description {
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Gaya untuk Navigasi */
+nav {
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+
