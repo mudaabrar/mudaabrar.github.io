@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
+    
+    <!--stylesheet-->
     <link rel="stylesheet" href="{{ site.baseur }}/assets/css/styles.css">
+
+    <!--favicon-->
+    <link rel="icon" href="{{ site.baseur }}/assets/image/favicon.ico">
+
+    <!--javascript-->
+    <script src="{{ site.baseur }}/assets/js/scripts.js"></script>
+
+    <!--plugins-->
+    {% feed_meta %}
+    {% seo %}
 </head>
 <body>
     {% include navigation.html %}
