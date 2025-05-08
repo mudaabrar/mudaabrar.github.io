@@ -1,61 +1,299 @@
-.current {
-  color: green;
+@charset "UTF-8";
+:root {
+  --primary-color: #333; /* Dark gray */
+  --accent-color: #f1f1f1; /* Soft light gray */
+  --background-color: #fafafa; /* Very light gray */
+  --text-color: #555; /* Medium gray for text */
+  --card-hover: rgba(0, 0, 0, 0.1); /* Lighter shadow */
+  --border-radius: 12px;
+  --transition: 0.3s ease;
+  --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.last_name {
-  color: aquamarine;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-/* Gaya Umum untuk Tubuh Halaman */
+/* Global Styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: white;
-  color: black;
-  line-height: 1.6;
+  font-family: var(--font-main);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 2rem;
+  text-align: left; /* Ensure all text is left-aligned globally */
+  margin: 0; /* Remove any default body margin */
 }
 
-/* Gaya untuk Tautan */
-a {
-  color: blue;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Gaya untuk Judul Halaman */
+/* Header & Titles */
 h1 {
-  font-size: 24px;
-  color: darkblue;
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-align: left; /* Align header text to the left */
 }
 
-/* Gaya untuk Nama */
-.name {
-  font-weight: bold;
-  color: goldenrod;
-}
-
-/* Gaya untuk Deskripsi Diri */
-.description {
-  font-style: italic;
-  margin-top: 10px;
-}
-
-/* Gaya untuk Navigasi */
+/* Navigation Bar */
 nav {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start; /* Align links to the left */
+  gap: 1rem;
+  background-color: var(--primary-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Allow the links to wrap on smaller screens */
 }
 
 nav a {
-  margin-right: 15px;
-  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color var(--transition);
 }
 
-p {
-  background-color: chocolate;
+nav a:hover {
+  background-color: #444; /* Darker shade of gray */
+}
+
+nav a.current {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+/* Responsive Navbar (Mobile View) */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack links vertically */
+    align-items: flex-start; /* Align links to the left */
+    padding: 1rem; /* Ensure padding on smaller screens */
+  }
+  nav a {
+    width: 100%; /* Make links full width */
+    text-align: left; /* Ensure text is aligned left */
+    padding: 0.8rem 1rem; /* Adjust padding for readability */
+  }
+  /* Optional: Add a Hamburger Menu for very small screens */
+  .hamburger-menu {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  nav ul {
+    display: none; /* Hide links by default */
+    width: 100%;
+  }
+  nav ul.open {
+    display: block; /* Show links when the hamburger menu is clicked */
+  }
+}
+/* Responsive Navbar (Very Small Devices) */
+@media (max-width: 480px) {
+  nav {
+    padding: 0.8rem; /* Adjust padding for smaller devices */
+  }
+  nav a {
+    font-size: 1rem; /* Adjust font size for readability on very small screens */
+    padding: 0.6rem 1rem;
+  }
+}
+h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  text-align: left; /* Align header text to the left */
+}
+
+/* Friend List Container */
+ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Grid for responsive layout */
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Friend Card */
+li {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  border-left: 5px solid #000;
+  margin-bottom: 10px;
+}
+
+/* Hover Effect for Cards */
+li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Link Styling for Friend Names */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
   font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Optional Avatar Placeholder */
+li::before {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Footer (if any) */
+footer {
+  text-align: left;
+  margin-top: 3rem;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* Smaller font for heading on mobile */
+  }
+  ul {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust columns on smaller screens */
+  }
+  li {
+    padding: 1rem; /* Adjust card padding */
+  }
+  a {
+    font-size: 1rem; /* Adjust font size for mobile screens */
+  }
+}
+/* Mobile View for Text Alignment and Spacing */
+@media (max-width: 480px) {
+  ul {
+    grid-template-columns: 1fr; /* Single column layout for very small screens */
+  }
+  li {
+    padding: 1rem 1.5rem;
+  }
+  a {
+    font-size: 1rem;
+  }
+}
+/* Hamburger Menu Style */
+.hamburger-menu {
+  display: none; /* Hide by default */
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  border: none;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul.open {
+  display: block; /* Display the menu when open */
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Show Hamburger Menu on Mobile */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block; /* Show the hamburger menu */
+  }
+  nav ul {
+    display: none; /* Hide the menu by default */
+    width: 100%;
+  }
+  nav ul.open {
+    display: block; /* Show the links when the menu is toggled */
+  }
+}
+/* Friends List Grid */
+.friend-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  max-width: 100%; /* Make the list take full width */
+  margin: 0; /* Ensure no centering */
+}
+
+/* Friend Card */
+.friend-list li {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: left; /* Ensure text inside the card is aligned left */
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  width: 100%; /* Make sure the cards take full width */
+}
+
+.friend-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Friend Link */
+.friend-list a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: left; /* Ensure links are aligned left */
+}
+
+/* Optional Avatar Placeholder */
+.friend-list li::before {
+  content: "👤";
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive Text Highlight */
+p {
+  font-weight: 600;
+  background: var(--accent-color);
+  color: var(--primary-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
   width: fit-content;
+  margin: 1rem 0; /* Ensure margin is aligned to the left */
+  text-align: left; /* Ensure highlighted text is aligned left */
+}
+
+/* Footer */
+footer {
+  text-align: left; /* Ensure footer text is aligned left */
+  margin-top: 3rem;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+  width: 100%; /* Ensure footer takes full width */
 }
 
 /*# sourceMappingURL=styles.css.map */
